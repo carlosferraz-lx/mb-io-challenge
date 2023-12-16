@@ -2,15 +2,18 @@ import { Locator, Page } from '@playwright/test';
 
 export class MercedesBenzSearchPage {
   readonly page: Page;
+  readonly filterToggle: Locator;
   readonly preOwnedTab: Locator;
   readonly preOwnedDemonstrator: Locator;
   readonly openColourFilter: Locator;
   readonly colourSelect: Locator;
   readonly colourOfChoice: Locator;
+  readonly filterLabel: Locator;
   readonly carPrice: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.filterToggle = page.locator('.filter-toggle');
     this.preOwnedDemonstrator = page
       .locator('[data-test-id="srp"] div')
       .filter({ hasText: 'Pre-Owned Demonstrator' })
@@ -19,6 +22,9 @@ export class MercedesBenzSearchPage {
     this.openColourFilter = page.locator('div').filter({ hasText: /^Colour$/ });
     this.colourSelect = page.getByText('Colour 0');
     this.colourOfChoice = page.getByText('BRILLANTBLUE BRILLANTBLUE');
+    this.filterLabel = page
+      .locator('[data-test-id="dcp-selected-filters-widget-tag"]')
+      .getByText('BRILLANTBLUE');
     this.carPrice = page.locator(
       '[data-test-id="dcp-cars-product-tile-price"]',
     );
@@ -39,6 +45,7 @@ export class MercedesBenzSearchPage {
   }
 
   async choseCarWithHighestPrice(page: Page) {
+    await this.page.waitForTimeout(3000);
     const link = await page.evaluate(() => {
       function getPriceFromHTML(elem) {
         return Number(
@@ -59,6 +66,6 @@ export class MercedesBenzSearchPage {
         ) as HTMLAnchorElement
       )?.href;
     });
-    await page.goto(link);
+    await this.page.goto(link);
   }
 }
