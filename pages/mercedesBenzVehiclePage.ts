@@ -20,6 +20,7 @@ export class MercedesBenzVehiclePage {
     );
   }
 
+  // Function to convert the two element values into json format and then into a json file
   async saveModelAndVINToFile() {
     const modelYear: string = await this.modelYear.innerText();
     const vin: string = await this.vin.innerText();

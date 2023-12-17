@@ -36,8 +36,10 @@ export class MercedesBenzLocationPage {
   }
 
   async fillLocationForm() {
+    const postalCode = '2007';
+
     await this.stateSelect.selectOption('New South Wales');
-    await this.postalCodeField.fill('2007');
+    await this.postalCodeField.fill(postalCode);
     await this.privateRadioBtn.click();
     await this.continueBtn.click();
   }

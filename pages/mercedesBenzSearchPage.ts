@@ -44,6 +44,8 @@ export class MercedesBenzSearchPage {
     await this.colourOfChoice.click();
   }
 
+  // My approach was to look into the DOM and extract the price from the HTML, strip the non numeric characters and the sort from highest to lowest
+  // From there extract the url from the highest priced car and navigate to this url
   async choseCarWithHighestPrice(page: Page) {
     await this.page.waitForTimeout(3000);
     const link = await page.evaluate(() => {

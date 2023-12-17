@@ -20,9 +20,11 @@ test('Validate Negative Path for Highest Price Enquiry', async ({ page }) => {
   await mercedesBenzVehiclePage.saveModelAndVINToFile();
   await mercedesBenzVehiclePage.clickEnquireNow();
   await mercedesBenzEnquiryFormPage.fillEnquiryForm();
+  // Assert for the email mandatory field
   await expect(mercedesBenzEnquiryFormPage.mandatoryEmailFieldLabel).toHaveText(
     'Please enter a valid email address using a minimum of six characters.',
   );
+  // Assert for the error message card
   await expect(mercedesBenzEnquiryFormPage.errorCard).toHaveText(
     'An error has occurred.Please check the following sections: Please check the data you entered. ',
   );

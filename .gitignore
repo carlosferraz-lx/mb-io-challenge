@@ -5,3 +5,5 @@ node_modules/
 /playwright/.cache/
 .prettierrc
 page-data.json
+/my-allure-results
+/allure-results

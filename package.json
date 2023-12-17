@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "headless": "npx playwright test --project chromium firefox",
-    "headed": "npx playwright test --project chromium firefox --headed"
+    "headless": "npx playwright test",
+    "headed": "npx playwright test --headedt"
   },
   "repository": {
     "type": "git",
