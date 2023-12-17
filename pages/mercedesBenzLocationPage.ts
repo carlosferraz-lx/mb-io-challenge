@@ -36,7 +36,8 @@ export class MercedesBenzLocationPage {
   }
 
   async fillLocationForm() {
-    const postalCode = '2007';
+    const process = require('process');
+    const postalCode = process.env.POSTAL_CODE;
 
     await this.stateSelect.selectOption('New South Wales');
     await this.postalCodeField.fill(postalCode);

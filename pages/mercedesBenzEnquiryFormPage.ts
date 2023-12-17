@@ -42,14 +42,14 @@ export class MercedesBenzEnquiryFromPage {
   async fillEnquiryForm() {
     const process = require('process');
     const invalidEmail = process.env.INVALID_EMAIL;
-    const phoneNumber = '0441234567';
+    const phoneNumber = process.env.PHONE_NUMBER;
+    const postalCode = process.env.POSTAL_CODE;
 
     await this.firstNameField.fill(faker.person.firstName());
     await this.lastNameField.fill(faker.person.lastName());
     await this.emailField.fill(invalidEmail);
     await this.phoneNumberField.fill(phoneNumber);
-    await this.postalCodeField.fill(faker.location.zipCode());
-    await this.page.pause();
+    await this.postalCodeField.fill(postalCode);
     await this.privacyPolicyCheckBox.check();
     await this.procceedBtn.click();
   }
